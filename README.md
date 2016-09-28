@@ -1,4 +1,7 @@
-#curlOsxHttp2#
+#Curl OSX HTTP/2 support#
+
+On OSX lastest versions of curl are only available through brew or 
+with macport.
 
 ###Update OSX curl with the lastest version and setup http2 support###
 

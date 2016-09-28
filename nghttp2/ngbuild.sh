@@ -53,6 +53,12 @@ else
 	NGHTTP2_VERNUM="$1"
 fi
 
+if [ -z $2 ]; then
+	PKGCONFIG_VERNUM="0.29"
+else
+	PKGCONFIG_VERNUM="$2"
+fi
+
 # --- Edit this to update version ---
 
 NGHTTP2_VERSION="nghttp2-${NGHTTP2_VERNUM}"
@@ -66,14 +72,27 @@ if (type "pkg-config" > /dev/null) ; then
 else
 	echo "ERROR: pkg-config not installed... attempting to install."
 
-	# Check to see if Brew is installed
-	if ! type "brew" > /dev/null; then
-		echo "FATAL ERROR: brew not installed - unable to install pkg-config - exiting."
-		exit
+	if [ ! -e ${NGHTTP2_VERSION}.tar.gz ]; then
+		echo "Download lastest pkg-config version ${PKGCONFIG_VERNUM}"
+		curl -LO https://pkg-config.freedesktop.org/releases/pkg-config-${PKGCONFIG_VERNUM}.tar.gz
 	else
-		echo "brew installed - using to install pkg-config"
-		brew install pkg-config
+		echo "Using pkg-config-${PKGCONFIG_VERNUM}.tar.gz"
 	fi
+
+	echo "Unpacking pkg-config"
+	tar xfz pkg-config-${PKGCONFIG_VERNUM}.tar.gz 
+
+	echo
+	echo "configure, compile and Install PKG-Config"
+	echo
+
+	cd pkg-config-${PKGCONFIG_VERNUM}
+	./configure &> "/tmp/pkg-config-${PKGCONFIG_VERNUM}.log"
+
+
+	make >> "/tmp/pkg-config-${PKGCONFIG_VERNUM}.log" 2>&1
+	sudo make install >> "/tmp/pkg-config-${PKGCONFIG_VERNUM}.log" 2>&1
+	make clean >> "/tmp/pkg-config-${PKGCONFIG_VERNUM}.log" 2>&1
 
 	# Check to see if installation worked
 	if (type "pkg-config" > /dev/null) ; then
@@ -83,7 +102,7 @@ else
 		exit
 	fi
 fi 
-
+exit 127
 buildMac()
 {
 	ARCH=$1
@@ -154,6 +173,10 @@ rm -rf ./Mac
 rm -rf ./lib
 echo "Remove downloaded nghttp2 sources"
 rm "${NGHTTP2_VERSION}.tar.gz"
+if [ ! -e pkg-config-${PKGCONFIG_VERNUM} ]; then
+	rm pkg-config-${PKGCONFIG_VERNUM}.tar.gz
+	rm -rf "pkg-config-${PKGCONFIG_VERNUM}"
+fi
 
 
 echo "Done"

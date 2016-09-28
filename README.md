@@ -1,5 +1,9 @@
 #curlOsxHttp2#
 
+###Update OSX curl with the lastest version and setup http2 support###
+
+inspired from [https://github.com/jasonacox/Build-OpenSSL-cURL](https://github.com/jasonacox/Build-OpenSSL-cURL)
+
 *Build scripts to update OSX curl with http2 support*
 
 **[directly from Curl documentation] (https://curl.haxx.se/docs/install.html):**

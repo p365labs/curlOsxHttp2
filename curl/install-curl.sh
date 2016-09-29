@@ -84,13 +84,14 @@ buildMac()
 	fi
 
 	if [ ! -z "$NGHTTP2" ]; then 
-		NGHTTP2CFG="--with-nghttp2=${PWD}/../build/nghttp2/Mac/${ARCH}"
-		NGHTTP2LIB="-L${PWD}/${NGHTTP2}/Mac/${ARCH}/lib"
+		NGHTTP2CFG="--with-nghttp2=${PWD}/../nghttp2/Mac/${ARCH}"
+		NGHTTP2LIB="-L${PWD}/../nghttp2/Mac/${ARCH}"
 	fi
 
 	export CC="${BUILD_TOOLS}/usr/bin/clang"
 	export CFLAGS="-arch ${ARCH} -pipe -Os -gdwarf-2 -fembed-bitcode"
-	export LDFLAGS="-arch ${ARCH} -L${OPENSSL}/Mac/lib ${NGHTTP2LIB}"
+	export LDFLAGS="-arch ${ARCH} ${NGHTTP2LIB}"
+
 	pushd . > /dev/null
 	cd "${CURL_VERSION}"
 

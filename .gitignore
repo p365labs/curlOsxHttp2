@@ -1,3 +1,8 @@
 curlOSXhttp2.sublime-*
 /archive/
 /build/
+/curl/curl-*
+/curl/include
+/curl/lib
+/nghttp2/lib
+/nghttp2/Mac

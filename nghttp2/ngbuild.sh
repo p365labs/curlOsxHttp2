@@ -168,12 +168,11 @@ cp -rf ./Mac ../build/nghttp2/Mac
 echo "Cleaning up"
 rm -rf /tmp/${NGHTTP2_VERSION}-*
 rm -rf ${NGHTTP2_VERSION}
-echo "remove dir created at compile time"
-rm -rf ./Mac
-rm -rf ./lib
-echo "Remove downloaded nghttp2 sources"
 rm "${NGHTTP2_VERSION}.tar.gz"
+
+
 if [ -e pkg-config-${PKGCONFIG_VERNUM} ]; then
+	echo "Remove pkg-config sources"
 	rm pkg-config-${PKGCONFIG_VERNUM}.tar.gz
 	rm -rf "pkg-config-${PKGCONFIG_VERNUM}"
 fi

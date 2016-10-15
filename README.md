@@ -25,11 +25,11 @@ If you are using MacPorts is not so easy at all... the advice is to compile curl
 The shell script inside this repo will help OSX users to compile curl with SSL and HTTP2 support. inside these scripts we compile CURL with the **--with-darwinssl** flag which is supported by *iOS 5.0 or later, or OS X 10.5 ("Leopard") or later.*
 
 When the Secure Transport (--with-darwinssl flag) is in use, the curl options --cacert and --capath and
-   their libcurl equivalents, will be *ignored*, because Secure Transport uses
-   the certificates stored in the **Keychain** to evaluate whether or not to trust
-   the server. This, of course, includes the root certificates that ship with
-   the OS. The --cert and --engine options, and their libcurl equivalents, are
-   currently unimplemented in curl with Secure Transport.
+their libcurl equivalents, will be *ignored*, because Secure Transport uses
+the certificates stored in the **Keychain** to evaluate whether or not to trust
+the server. This, of course, includes the root certificates that ship with
+the OS. The --cert and --engine options, and their libcurl equivalents, are
+currently unimplemented in curl with Secure Transport.
 
 ###Update OSX curl with the lastest version and setup http2 support###
 
@@ -51,3 +51,18 @@ inspired from [https://github.com/jasonacox/Build-OpenSSL-cURL](https://github.c
    the server. This, of course, includes the root certificates that ship with
    the OS. The --cert and --engine options, and their libcurl equivalents, are
    currently unimplemented in curl with Secure Transport.
+
+##How to use it##
+
+the script is packaged inside a set of bash scripts, u can freely use to build
+a new **CURL** binary. After executing 
+>build-all.sh 
+you will have a new directory created inside the project : archive
+inside you will find the new executable.
+
+to check if the new **Curl** has HTTP2 support execute it with **--version**
+if you see HTTP2 in the output the trick is done!
+
+curl 7.50.3 (i386-apple-darwin) libcurl/7.50.3 SecureTransport zlib/1.2.8 nghttp2/1.14.0
+Protocols: dict file ftp ftps gopher http https imap imaps ldap ldaps pop3 pop3s rtsp smb smbs smtp smtps telnet tftp
+Features: IPv6 Largefile NTLM NTLM_WB SSL libz **HTTP2** UnixSockets

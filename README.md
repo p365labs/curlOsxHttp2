@@ -64,6 +64,6 @@ inside you will find the new executable.
 to check if the new **Curl** has HTTP2 support execute it with **--version**
 if you see HTTP2 in the output the trick is done!
 
-curl 7.50.3 (i386-apple-darwin) libcurl/7.50.3 SecureTransport zlib/1.2.8 nghttp2/1.14.0
-Protocols: dict file ftp ftps gopher http https imap imaps ldap ldaps pop3 pop3s rtsp smb smbs smtp smtps telnet tftp
-Features: IPv6 Largefile NTLM NTLM_WB SSL libz **HTTP2** UnixSockets
+>curl 7.50.3 (i386-apple-darwin) libcurl/7.50.3 SecureTransport zlib/1.2.8 nghttp2/1.14.0
+>Protocols: dict file ftp ftps gopher http https imap imaps ldap ldaps pop3 pop3s rtsp smb smbs smtp smtps telnet tftp
+>Features: IPv6 Largefile NTLM NTLM_WB SSL libz **HTTP2** UnixSockets

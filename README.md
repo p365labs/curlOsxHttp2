@@ -56,8 +56,9 @@ inspired from [https://github.com/jasonacox/Build-OpenSSL-cURL](https://github.c
 
 the script is packaged inside a set of bash scripts, u can freely use to build
 a new **CURL** binary. After executing 
->build-all.sh 
-you will have a new directory created inside the project : archive
+>build-all.sh
+
+a new directory will be created inside the project : **archive**
 inside you will find the new executable.
 
 to check if the new **Curl** has HTTP2 support execute it with **--version**
